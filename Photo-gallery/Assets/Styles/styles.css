@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@font-face {
+  font-family: DIN-Condensed;
+  src: url(../Fonts/D-DINCondensed-Bold.ttf);
+}
+
+body {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+:root {
+    --main-text-color: #FFFFFF;
+    --secondary-text-color: #ffffffb3;
+    --link-text-color: #00DBFF;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 2px;
+    background-color: #000000;
+    width: 100%;
+    height: 100dvh;
+}
+
+.grid_item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.grid-item-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s;
+}
+
+.blurred-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #0000005f;
+    transition: all 0.7s;
+}
+
+
+.grid_item:hover .blurred-layer {
+    background-color: #000000b3;
+}
+
+.grid_item:hover .grid-item-image {
+    filter: grayscale(100%) blur(7px);  
+    -webkit-filter: grayscale(100%) blur(7px);
+    transform: scale(1.05);
+}
+
+.blurred-layer-content {
+    display: none;
+}
+
+@media (min-width: 1178px) {
+    .blurred-layer-content {
+        display: block;
+        position: absolute;
+        left: 40px;
+        right: 40px;
+        animation: blurred-layer-content-small-margin 500ms forwards;
+    }
+    .blurred-layer-texts {
+        transition: all 0.7s;
+    }
+    .grid_item:hover .blurred-layer-content {
+        animation: blurred-layer-content-large-margin 500ms forwards;
+    }
+    @keyframes blurred-layer-content-large-margin {
+        0% {
+            bottom: 15px;
+        }
+        100% {
+            bottom: 40px;
+        }
+    }
+    @keyframes blurred-layer-content-small-margin {
+        0% {
+            bottom: 40px;
+        }
+        100% {
+            bottom: 15px;
+        }
+    }
+    .knowMoreLink {
+        font-family: Poppins;
+        text-decoration: none;
+        color: var(--link-text-color);
+        font-size: 14px;
+        animation: fade-out 300ms forwards;
+    }
+    .grid_item:hover .knowMoreLink {
+        animation: fade-in 500ms forwards;
+    }
+    
+    .right-arrow {
+        width: 12px;
+        height: 12px;
+        margin-left: 8px;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }        
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }        
+    }
+
+    .grid_item:hover .blurred-layer-texts {
+        margin-bottom: 20px;
+    }
+    .item-name-1, .item-name-2 {
+        display: block;
+        color: var(--main-text-color);
+        font-family: DIN-Condensed;
+        font-size: 38px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .item-name-2 {
+        margin-bottom: 20px;
+    }
+    .item-origin-place {
+        display: block;
+        color: var(--secondary-text-color);
+        font-family: Poppins;
+        font-size: 12px;
+    }
+
+}
